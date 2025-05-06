@@ -6,7 +6,7 @@ class Chat {
             message.isRead = true
     }
 
-    fun unreadMessagesB() : Boolean {
+    fun unreadMessages() : Boolean {
         return messages.filter { !it.isRead }.isEmpty()
     }
 

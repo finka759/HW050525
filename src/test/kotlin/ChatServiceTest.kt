@@ -66,4 +66,25 @@ class ChatServiceTest {
         val result = ChatService.getChats(456).size
         assertEquals(1, result)
     }
+
+    @Test
+    fun getChatsLastMessages() {
+        val result = ChatService.getChatsLastMessages()
+        assertEquals(listOf("message6", "message2", "message4"), result)
+    }
+
+    @Test
+    fun getMessagesFromChatLimited() {
+        ChatService.addMessage(listOf(456, 123), Message(text = "message 3"))
+        ChatService.addMessage(listOf(456, 123), Message(text = "message 4"))
+        ChatService.addMessage(listOf(456, 123), Message(text = "message 5"))
+        val result = ChatService.getMessagesFromChatLimited(listOf(456, 123), 4).size
+        assertEquals(4, result)
+
+    }
+
+
+
+
+
 }
