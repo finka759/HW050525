@@ -22,6 +22,14 @@ object ChatService {
         }
     }
 
+    fun delMessage(userIds: List<Int>, orderingPlace: Int): Chat {
+        return chats.getOrPut(userIds.sorted()) {
+            Chat()
+        }.apply {
+            messages.removeAt(orderingPlace)
+        }
+    }
+
     fun getMessagesFromChat(userIds: List<Int>): List<Message> {
         val chat = chats.filter { entry -> entry.key.containsAll(userIds.sorted()) }.values.first().messages
         chat.forEach { message -> message.isRead = true }

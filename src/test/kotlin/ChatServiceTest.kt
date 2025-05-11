@@ -28,6 +28,13 @@ class ChatServiceTest {
     }
 
     @Test
+    fun delMessage(){
+        ChatService.delMessage(listOf(456, 123), 1)
+        val result = ChatService.getMessagesFromChat(listOf(456, 123)).size
+        assertEquals(1, result)
+    }
+
+    @Test
     fun getMessagesFromChat() {
         val result = ChatService.getMessagesFromChat(listOf(456, 123)).size
         assertEquals(2, result)
